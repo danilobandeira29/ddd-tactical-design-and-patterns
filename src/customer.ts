@@ -21,6 +21,7 @@ class Customer {
 
     changeName(name: string) {
         this._name = name;
+        this.validate();
     }
 
     activate() {
