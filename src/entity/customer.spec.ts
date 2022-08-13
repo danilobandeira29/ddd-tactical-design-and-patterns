@@ -1,4 +1,5 @@
 import Customer from "./customer";
+import Address from "./address";
 
 describe("Customer unit tests", () => {
     it("should throw error when id is empty", () => {
@@ -18,5 +19,13 @@ describe("Customer unit tests", () => {
     it("should throw error when try to activate a customer and address is empty", () => {
         const customer = new Customer("123", "John");
         expect(() => customer.activate()).toThrowError("Address is mandatory to activate a Customer");
+    })
+
+    it("should activate customer", () => {
+        const customer = new Customer("123", "John");
+        const address = new Address("Street", "10", "64079-000", "City");
+        customer.changeAddress(address);
+        customer.activate();
+        expect(customer.isActive()).toEqual(true);
     })
 })
