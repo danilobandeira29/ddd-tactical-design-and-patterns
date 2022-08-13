@@ -16,7 +16,12 @@ describe("Customer unit tests", () => {
         expect(customer.name).toEqual("Jane");
     })
 
-    it("should throw error when try to activate a customer and address is empty", () => {
+    it("should throw error when trying to change customer name with empty name", () => {
+        const customer = new Customer("123", "John");
+        expect(() => customer.changeName("")).toThrowError("Name is required");
+    })
+
+    it("should throw error when trying to activate a customer and address is empty", () => {
         const customer = new Customer("123", "John");
         expect(() => customer.activate()).toThrowError("Address is mandatory to activate a Customer");
     })
