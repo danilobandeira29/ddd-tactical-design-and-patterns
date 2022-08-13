@@ -48,4 +48,8 @@ export default class Customer {
     deactivate() {
         this._active = false;
     }
+
+    isActive(): boolean {
+        return this._active;
+    }
 }
