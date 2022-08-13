@@ -8,4 +8,10 @@ describe("Customer unit tests", () => {
     it("should throw error when name is empty", () => {
         expect(() => new Customer("123", "")).toThrowError("Name is required");
     })
+
+    it("should change customer name", () => {
+        const customer = new Customer("123", "John");
+        customer.changeName("Jane");
+        expect(customer.name).toEqual("Jane");
+    })
 })
