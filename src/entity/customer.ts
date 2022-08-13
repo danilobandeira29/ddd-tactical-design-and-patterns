@@ -1,6 +1,6 @@
 import Address from "./address";
 
-class Customer {
+export default class Customer {
     _id: string;
     _name: string;
     _address?: Address;
@@ -24,6 +24,14 @@ class Customer {
     changeName(name: string) {
         this._name = name;
         this.validate();
+    }
+
+    changeAddress(address: Address) {
+        this._address = address;
+    }
+
+    getId() {
+        return this._id;
     }
 
     activate() {
