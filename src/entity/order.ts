@@ -16,6 +16,9 @@ export default class Order {
         if(!this._id) {
             throw new Error("Id is required");
         }
+        if(!this._customerId) {
+            throw new Error("CustomerId is required");
+        }
     }
 
     total(): number {
