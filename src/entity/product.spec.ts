@@ -27,4 +27,10 @@ describe("Product unit tests", () => {
         const product = new Product("123", "Product 1", 100);
         expect(() => product.changeName("")).toThrowError("Name is required")
     })
+
+    it("should change price", () => {
+        const product = new Product("123", "Product 1", 100);
+        product.changePrice(200);
+        expect(product.price).toEqual(200);
+    })
 })
