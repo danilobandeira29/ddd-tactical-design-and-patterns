@@ -14,5 +14,8 @@ export default class Product {
         if(!this._id) {
             throw new Error("Id is required");
         }
+        if(!this._name) {
+            throw new Error("Name is required");
+        }
     }
 }
