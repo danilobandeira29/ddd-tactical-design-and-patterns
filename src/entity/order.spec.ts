@@ -14,10 +14,10 @@ describe("Order unit tests", () => {
         expect(() => new Order("1234", "123", [])).toThrowError("Items quantity must be greater than zero");
     })
 
-    it("should calculate total of 40 which is an item with a value of 35 and another item with a value of 5", () => {
-        const item1 = new OrderItem("1", "Item 1", 35);
-        const item2 = new OrderItem("2", "Item 2", 5);
+    it("should calculate total of 75 which is an item with quantity 2 and value of 35 and another item with quantity 1 and value of 5", () => {
+        const item1 = new OrderItem("1", "Item 1", 35, "123", 2);
+        const item2 = new OrderItem("2", "Item 2", 5, "123", 1);
         const order = new Order("123", "1234", [item1, item2]);
-        expect(order.total()).toEqual(40);
+        expect(order.total()).toEqual(75);
     })
 })
