@@ -11,9 +11,16 @@ export default class OrderItem {
         this._price = price;
         this._productId= productId;
         this._quantity= quantity;
+        this.validate();
     }
 
     get price(): number {
         return this._price * this._quantity;
+    }
+
+    validate() {
+        if(this._quantity < 0) {
+            throw new Error("Quantity must be greater than zero");
+        }
     }
 }
