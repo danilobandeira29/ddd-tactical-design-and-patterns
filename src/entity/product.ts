@@ -24,6 +24,7 @@ export default class Product {
 
     changeName(name: string) {
         this._name = name;
+        this.validate();
     }
 
     get name(): string {
