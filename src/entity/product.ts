@@ -33,6 +33,7 @@ export default class Product {
 
     changePrice(price: number) {
         this._price = price;
+        this.validate();
     }
 
     get price(): number {
