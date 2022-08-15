@@ -10,6 +10,6 @@ describe("Order unit tests", () => {
     })
 
     it("should throw error when order items are empty", () => {
-        expect(() => new Order("1234", "123", [])).toThrowError("Items are required");
+        expect(() => new Order("1234", "123", [])).toThrowError("Items quantity must be greater than zero");
     })
 })

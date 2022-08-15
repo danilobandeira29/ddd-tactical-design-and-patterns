@@ -20,7 +20,7 @@ export default class Order {
             throw new Error("CustomerId is required");
         }
         if(!this._items.length) {
-            throw new Error("Items are required");
+            throw new Error("Items quantity must be greater than zero");
         }
     }
 
