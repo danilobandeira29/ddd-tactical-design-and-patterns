@@ -1,6 +1,6 @@
 export default class Product {
     private readonly _id: string;
-    private readonly _name: string;
+    private _name: string;
     private readonly _price: number;
 
     constructor(id: string, name: string, price: number) {
@@ -20,5 +20,13 @@ export default class Product {
         if(this._price <= 0) {
             throw new Error("Price must be greater than zero");
         }
+    }
+
+    changeName(name: string) {
+        this._name = name;
+    }
+
+    get name(): string {
+        return this._name;
     }
 }
