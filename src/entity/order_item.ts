@@ -1,11 +1,19 @@
 export default class OrderItem {
-    _id: string;
-    _name: string; // se eu fosse relacionar com um produto, provavelmente ele estaria em outro agregado e a relação seria feita por id(productId)
-    _price: number;
+    private _id: string;
+    private _productId: string;
+    private _name: string; // se eu fosse relacionar com um produto, provavelmente ele estaria em outro agregado e a relação seria feita por id(productId)
+    private readonly _price: number;
+    private readonly _quantity: number;
 
-    constructor(id: string, name: string, price: number) {
+    constructor(id: string, name: string, price: number, productId: string, quantity: number) {
         this._id = id;
         this._name = name;
         this._price = price;
+        this._productId= productId;
+        this._quantity= quantity;
+    }
+
+    get price(): number {
+        return this._price * this._quantity;
     }
 }
