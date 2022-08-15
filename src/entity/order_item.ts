@@ -19,7 +19,7 @@ export default class OrderItem {
     }
 
     validate() {
-        if(this._quantity < 0) {
+        if(this._quantity <= 0) {
             throw new Error("Quantity must be greater than zero");
         }
     }
