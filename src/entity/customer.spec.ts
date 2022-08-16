@@ -40,6 +40,11 @@ describe("Customer unit tests", () => {
         expect(customer.isActive()).toEqual(false);
     })
 
+    it("should initialize with zero reward points", () => {
+        const customer = new Customer("1", "Danilo Bandeira");
+        expect(customer.rewardPoints).toEqual(0);
+    })
+
     it("should add one hundred reward points", () => {
         const customer = new Customer("1", "Danilo Bandeira");
         customer.addRewardPoints(100);
