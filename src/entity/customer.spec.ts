@@ -50,4 +50,12 @@ describe("Customer unit tests", () => {
         customer.addRewardPoints(100);
         expect(customer.rewardPoints).toEqual(100);
     })
+
+    it("should add one hundred reward points and add three hundred reward points and the customer will have four hundred reward points at the end", () => {
+        const customer = new Customer("1", "Danilo Bandeira");
+        customer.addRewardPoints(100);
+        expect(customer.rewardPoints).toEqual(100);
+        customer.addRewardPoints(300);
+        expect(customer.rewardPoints).toEqual(400);
+    })
 })
