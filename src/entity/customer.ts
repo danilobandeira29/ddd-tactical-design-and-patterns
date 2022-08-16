@@ -26,7 +26,7 @@ export default class Customer {
         return this._name;
     }
 
-    getId() {
+    get id() {
         return this._id;
     }
 
