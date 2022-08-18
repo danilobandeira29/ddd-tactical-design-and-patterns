@@ -1,4 +1,4 @@
-import OrderItem from "./order_item";
+import OrderItem from "./order-item";
 
 describe("Order unit tests", () => {
     it("should throw error when trying to create and quantity is less than zero", () => {
