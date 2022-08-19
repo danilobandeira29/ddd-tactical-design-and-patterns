@@ -1,5 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import ProductModel from "../db/sequelize/model/product.model";
+import Product from "../../domain/entity/product";
+import ProductRepository from "./product.repository";
 
 describe("Product Repository tests", () => {
     let sequelize: Sequelize;
@@ -17,5 +19,17 @@ describe("Product Repository tests", () => {
 
     afterEach(async () => {
         await sequelize.close();
+    })
+
+    it("should create a product", async () => {
+     const productRepository = new ProductRepository();
+     const product = new Product("1", "Product 1", 4000);
+     await productRepository.create(product);
+     const productModel = await ProductModel.findOne({ where: { id: "1" } });
+     expect(productModel?.toJSON()).toStrictEqual({
+         id: "1",
+         name: "Product 1",
+         price: 4000
+     });
     })
 })
