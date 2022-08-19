@@ -53,11 +53,11 @@ describe("Product Repository tests", () => {
         const product = new Product("1", "Product 1", 4000);
         await productRepository.create(product);
         const productModel = await ProductModel.findOne({ where: { id: "1" } });
-        const foundedProduct = await productRepository.find("1");
+        const foundProduct = await productRepository.find("1");
         expect(productModel?.toJSON()).toStrictEqual({
-            id: foundedProduct.id,
-            name: foundedProduct.name,
-            price: foundedProduct.price
+            id: foundProduct.id,
+            name: foundProduct.name,
+            price: foundProduct.price
         });
     })
 })
