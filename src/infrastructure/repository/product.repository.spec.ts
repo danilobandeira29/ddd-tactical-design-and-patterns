@@ -60,4 +60,14 @@ describe("Product Repository tests", () => {
             price: foundProduct.price
         });
     })
+
+    it("should find all products", async () => {
+        const productRepository = new ProductRepository();
+        const product = new Product("1", "Product 1", 4000);
+        await productRepository.create(product);
+        const product2 = new Product("2", "Product 2", 2000);
+        await productRepository.create(product2);
+        const foundProducts = await productRepository.findAll();
+        expect([product, product2]).toEqual(foundProducts);
+    })
 })
