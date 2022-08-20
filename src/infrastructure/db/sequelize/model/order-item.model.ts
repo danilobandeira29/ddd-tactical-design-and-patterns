@@ -23,7 +23,7 @@ export default class OrderItemModel extends Model {
     declare order_id: string;
 
     @BelongsTo(() => OrderModel)
-    declare order: OrderModel;
+    declare order: ReturnType<() => OrderModel>; // or Awaited<OrderModel> to get the type correctly after initialization
 
     @Column({ allowNull: false, type: DataType.INTEGER })
     declare quantity: number;
