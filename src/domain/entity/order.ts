@@ -3,7 +3,7 @@ import OrderItem from "./order-item";
 export default class Order {
     private readonly _id: string;
     private readonly _customerId: string;
-    private readonly _items: OrderItem[];
+    private _items: OrderItem[];
 
     constructor(id: string, customerId: string, items: Array<OrderItem>) {
         this._id = id;
@@ -22,6 +22,10 @@ export default class Order {
         if(!this._items.length) {
             throw new Error("Items quantity must be greater than zero");
         }
+    }
+
+    changeItems(items: Array<OrderItem>) {
+        this._items = items;
     }
 
     total(): number {
