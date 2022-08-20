@@ -5,14 +5,14 @@ export default class Order {
     private readonly _customerId: string;
     private readonly _items: OrderItem[];
 
-    constructor(id: string, customerId: string, items: OrderItem[]) {
+    constructor(id: string, customerId: string, items: Array<OrderItem>) {
         this._id = id;
         this._customerId = customerId;
         this._items = items;
         this.validate();
     }
 
-    validate() {
+    private validate() {
         if(!this._id) {
             throw new Error("Id is required");
         }
@@ -26,5 +26,17 @@ export default class Order {
 
     total(): number {
         return this._items.reduce((acc, item) => acc + item.price, 0);
+    }
+
+    get id(): string {
+        return this._id;
+    }
+
+    get customerId(): string {
+        return this._customerId;
+    }
+
+    get items(): Array<OrderItem> {
+        return this._items;
     }
 }
