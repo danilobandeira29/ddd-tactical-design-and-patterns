@@ -30,7 +30,7 @@ describe("Order Repository tests", () => {
         await sequelize.close();
     });
 
-    it("should create a order", async () => {
+    it("should create an order", async () => {
       const customerRepository = new CustomerRepository();
       const customer = new Customer("1", "Customer 1");
       const address = new Address("Street", "1234", "Zip", "City");
@@ -59,5 +59,41 @@ describe("Order Repository tests", () => {
               }
           ]
       });
+    });
+
+    it("should update an order", async () => {
+        const customerRepository = new CustomerRepository();
+        const customer = new Customer("1", "Customer 1");
+        const address = new Address("Street", "1234", "Zip", "City");
+        customer.changeAddress(address);
+        await customerRepository.create(customer);
+        const productRepository = new ProductRepository();
+        const product = new Product("1", "Product 1", 4000);
+        const product2 = new Product("2", "Product 2", 2000);
+        await productRepository.create(product);
+        await productRepository.create(product2);
+        const orderItem = new OrderItem("1", product.name, product.price, product.id, 4);
+        const orderItem2 = new OrderItem("2", product2.name, product2.price, product2.id, 2);
+        const order = new Order("1", customer.id, [orderItem]);
+        const orderRepository = new OrderRepository();
+        await orderRepository.create(order);
+        order.changeItems([orderItem2]);
+        await orderRepository.update(order);
+        const orderModel = await OrderModel.findOne({ where: { id: order.id }, include:["items"] });
+        expect(orderModel?.toJSON()).toStrictEqual({
+            id: order.id,
+            customer_id: order.customerId,
+            total: order.total(),
+            items: [
+                {
+                    id: orderItem2.id,
+                    name: orderItem2.name,
+                    price: orderItem2.price,
+                    product_id: orderItem2.productId,
+                    quantity: orderItem2.quantity,
+                    order_id: order.id
+                }
+            ]
+        });
     });
 });
