@@ -128,7 +128,7 @@ describe("Order Repository tests", () => {
                     price: orderItem.price,
                     product_id: orderItem.productId,
                     quantity: orderItem.quantity,
-                    order_id: order.id
+                    order_id: foundOrder.id
                 }
             ]
         });
