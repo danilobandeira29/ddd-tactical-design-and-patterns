@@ -57,10 +57,10 @@ export default class OrderRepository implements OrderRepositoryInterface {
     }
 
     async findAll(): Promise<Array<Order>> {
-        const orderModel = await OrderModel.findAll({
+        const orderModels = await OrderModel.findAll({
             include: [{ model: OrderItemModel }]
         });
-        return orderModel.map(orderModel => {
+        return orderModels.map(orderModel => {
             const orderItems = orderModel.items.map(item => new OrderItem(item.id, item.name, item.price, item.product_id, item.quantity));
             return new Order(orderModel.id, orderModel.customer_id, orderItems);
         })
