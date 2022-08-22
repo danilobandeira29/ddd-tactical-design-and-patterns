@@ -133,4 +133,11 @@ describe("Order Repository tests", () => {
             ]
         });
     });
+
+    it("should throw error when trying to find an order that doesn't exist", async () => {
+        const orderRepository = new OrderRepository();
+        await expect(async () => {
+            await orderRepository.find("123");
+        }).rejects.toThrowError("Order not found");
+    })
 });
