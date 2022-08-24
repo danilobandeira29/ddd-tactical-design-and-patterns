@@ -1,7 +1,7 @@
 import OrderItem from "../entity/order-item";
 import Order from "../entity/order";
 import OrderService from "./order.service";
-import Customer from "../entity/customer";
+import Customer from "../../customer/entity/customer";
 
 describe("Order service unit tests", () => {
     it("should reward a customer with two hundred points of an order with total of four hundred", () => {
