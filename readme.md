@@ -1,4 +1,4 @@
-# Implementing:
+# Implementing
 - [x] Tactical Elements
 - [x] Entity
 - [x] Value Object
@@ -7,7 +7,7 @@
 - [x] Domain Service
 - [x] Repository
 - [x] Domain Events
-- [ ] Module
+- [x] Module
 - [ ] Factory
 
 In progress...
