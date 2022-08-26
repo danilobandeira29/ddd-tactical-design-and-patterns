@@ -8,6 +8,4 @@
 - [x] Repository
 - [x] Domain Events
 - [x] Module
-- [ ] Factory
-
-In progress...
+- [x] Factory
