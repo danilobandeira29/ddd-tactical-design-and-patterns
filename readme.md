@@ -1,4 +1,4 @@
-# Implementing
+# Implements 
 - [x] Tactical Elements
 - [x] Entity
 - [x] Value Object
