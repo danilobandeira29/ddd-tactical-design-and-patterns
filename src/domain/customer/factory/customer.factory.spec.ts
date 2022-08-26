@@ -1,5 +1,4 @@
 import CustomerFactory from "./customer.factory";
-import Address from "../value-object/address";
 
 describe("Customer Factory unit tests", () => {
     it("should create a customer", () => {
@@ -10,10 +9,23 @@ describe("Customer Factory unit tests", () => {
     });
 
    it("should create a customer with address", () => {
-       const address = new Address("Street", "Number", "00000-000", "City");
-       const customer = CustomerFactory.createWithAddress("Danilo Bandeira", address);
+       const createWithAddressProps = {
+           name: "Danilo Bandeira",
+           address: {
+               street: "Street",
+               number: "Number",
+               zip: "00000-000",
+               city: "City"
+           }
+       }
+       const customer = CustomerFactory.createWithAddress(createWithAddressProps);
        expect(customer.id).toBeDefined();
        expect(customer.name).toEqual("Danilo Bandeira");
-       expect(customer.address).toEqual(address);
+       expect(customer.address).toEqual({
+           _street: "Street",
+           _number: "Number",
+           _zip: "00000-000",
+           _city: "City"
+       });
    })
 });
