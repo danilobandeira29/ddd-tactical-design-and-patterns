@@ -32,4 +32,20 @@ describe("Unit test Find Customer Usecase", () => {
             }
         })
     })
+
+    it("should throws 'Customer not found.' because customer not found", async() => {
+        const customer = CustomerFactory.createWithAddress({
+            name: "Danilo Bandeira",
+            address: {
+                city: "city",
+                street: "street",
+                number: "1",
+                zip: "00000-000"
+            }})
+        repository.find = jest.fn().mockRejectedValueOnce(new Error("Customer not found."));
+        await expect(
+            () => new FindCustomerUseCase(repository)
+            .execute({ id: customer.id })
+        ).rejects.toThrow("Customer not found.");
+    })
 })
