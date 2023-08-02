@@ -1,6 +1,4 @@
 import CustomerRepositoryInterface from "../../../domain/customer/repository/customer.repository.interface";
-import CustomerFactory from "../../../domain/customer/factory/customer.factory";
-import {InputCreateCustomerDto} from "./create.customer.dto";
 import CreateCustomerUseCase from "./create.customer.usecase";
 
 describe("Create Customer UseCase Unit", () => {
