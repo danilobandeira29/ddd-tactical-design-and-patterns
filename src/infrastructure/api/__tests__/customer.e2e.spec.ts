@@ -6,7 +6,7 @@ describe("Customer e2e tests", () => {
         await sequelize.sync({ force: true });
     })
 
-    afterEach(async () => {
+    afterAll(async () => {
         await sequelize.close();
     })
 
@@ -33,5 +33,14 @@ describe("Customer e2e tests", () => {
                 zip: "00000-000"
             }
         })
+    })
+
+    it("should not create a Customer because address is empty", async() => {
+        const response = await request(app)
+            .post("/customers")
+            .send({
+                name: "Danilo Bandeira"
+            })
+        expect(response.status).toEqual(500);
     })
 })
