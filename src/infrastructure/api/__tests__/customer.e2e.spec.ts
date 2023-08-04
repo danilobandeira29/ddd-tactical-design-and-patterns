@@ -39,7 +39,8 @@ describe("Customer e2e tests", () => {
         const response = await request(app)
             .post("/customers")
             .send({
-                name: "Danilo Bandeira"
+                name: "Danilo Bandeira",
+                address: {}
             })
         expect(response.status).toEqual(500);
     })
