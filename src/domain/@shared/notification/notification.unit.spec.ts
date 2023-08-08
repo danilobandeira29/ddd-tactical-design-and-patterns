@@ -41,4 +41,29 @@ describe("Notification unit tests", () => {
         notification.addError(productError);
         expect(notification.messages()).toStrictEqual("customer: Id is required, customer: Name is required, product: Id is required");
     })
+
+    it("should has at least one error", () => {
+        const notification = new Notification();
+        const customerError = {
+            message: "Id is required",
+            context: "customer"
+        };
+        notification.addError(customerError);
+        expect(notification.hasAtLeastOneError()).toStrictEqual(true);
+    })
+
+    it("should get all errors objects", () => {
+        const notification = new Notification();
+        const customerError = {
+            message: "Id is required",
+            context: "customer"
+        };
+        const customerError2 = {
+            message: "Name is required",
+            context: "customer"
+        };
+        notification.addError(customerError);
+        notification.addError(customerError2);
+        expect(notification.errors()).toStrictEqual([customerError, customerError2]);
+    })
 })

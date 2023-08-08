@@ -1,24 +1,32 @@
-export interface NotificationError {
+export interface NotificationErrorProps {
     message: string;
     context: string;
 }
 
 export default class Notification {
-    private readonly errors: NotificationError[];
+    private readonly _errors: NotificationErrorProps[];
 
     constructor() {
-        this.errors = [];
+        this._errors = [];
     }
 
-    addError(n: NotificationError): void {
-        this.errors.push(n);
+    addError(n: NotificationErrorProps): void {
+        this._errors.push(n);
     }
 
-    messages(c?: NotificationError['context']): string {
-        return this.errors
+    messages(c?: NotificationErrorProps['context']): string {
+        return this._errors
             .filter(e => c === undefined || e.context === c)
             .map(e => `${e.context}: ${e.message}`)
             .join(', ')
         ;
+    }
+
+    hasAtLeastOneError(): boolean {
+        return this._errors.length > 0;
+    }
+
+    errors(): NotificationErrorProps[] {
+        return this._errors;
     }
 }
