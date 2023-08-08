@@ -12,9 +12,6 @@ export default class Customer extends Entity {
         super(id);
         this._name = name;
         this.validate();
-        if(this._notification.hasAtLeastOneError()) {
-            throw new NotificationError(this._notification.errors());
-        }
     }
 
     validate() {
@@ -24,12 +21,14 @@ export default class Customer extends Entity {
                 message: "Id is required"
             })
         }
-        console.log(this.name)
         if(!this._name) {
             this._notification.addError({
                 context: "customer",
                 message: "Name is required"
             })
+        }
+        if(this._notification.hasAtLeastOneError()) {
+            throw new NotificationError(this._notification.errors());
         }
     }
 
