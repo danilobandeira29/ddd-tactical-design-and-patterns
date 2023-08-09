@@ -2,7 +2,7 @@ import Notification from "../notification/notification";
 
 export default abstract class Entity {
     protected readonly _id: string;
-    protected readonly _notification: Notification;
+    readonly _notification: Notification;
 
     protected constructor(id: string) {
         this._id = id;
