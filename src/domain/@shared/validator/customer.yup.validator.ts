@@ -1,6 +1,7 @@
 import {ValidatorInterface} from "./validator.interface";
 import Customer from "../../customer/entity/customer";
 import * as yup from "yup";
+import NotificationError from "../notification/notification.error";
 
 export default class CustomerYupValidator implements ValidatorInterface<Customer> {
     validate(entity: Customer) {
@@ -22,6 +23,7 @@ export default class CustomerYupValidator implements ValidatorInterface<Customer
                     message: error
                 })
             })
+            throw new NotificationError(entity._notification.errors());
         }
     }
 }
